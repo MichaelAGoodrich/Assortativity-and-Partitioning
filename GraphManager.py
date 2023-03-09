@@ -4,23 +4,21 @@ Michael A. Goodrich
 Brigham Young University
 July 2022 """
 
-from debugpy import wait_for_client
 import matplotlib as mpl
 #mpl.use('tkagg')
 from matplotlib import pyplot as plt
 import networkx as nx
 from ComputeAndPlotDendrogram import *
 from scipy.cluster.hierarchy import dendrogram
-from WorldModel import *
 import community as community_louvain
 from networkx.algorithms.community.centrality import girvan_newman
 
-
+from AssortativeNetworkManager import *
 
 class graphHandler:
-    def __init__(self,myNetwork):
+    def __init__(self):
         self.figureNumber = 1
-        self.myNetwork = myNetwork
+        self.myNetwork = MixedNetworkFormation(color_template=['b', 'm', 'c', 'y', 'r', 'c', 'g'])
         self.G = self.myNetwork.getGraph()
         self.color_template = self.myNetwork.getColorTemplate()
         self.color_map = self.myNetwork.getGroundTruthColors()
@@ -50,7 +48,7 @@ class graphHandler:
         else: plt.waitforbuttonpress(0.2)
     def showDendrogram(self,figureNumber = None,wait_for_button = False):
         if figureNumber == None: figureNumber = self.figureNumber; self.figureNumber += 1
-        myHandler = DendogramHandler(self.G)
+        myHandler = DendrogramHandler(self.G)
         Z = myHandler.getLinkMatrix()
         ZLabels = myHandler.getLinkMatrixLabels()
         plt.figure(figureNumber);plt.clf()

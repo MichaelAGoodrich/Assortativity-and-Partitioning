@@ -13,7 +13,7 @@ mpl.use('tkagg')
 from matplotlib import pyplot as plt
 import networkx as nx
 from itertools import chain, combinations
-from scipy.cluster.hierarchy import dendrogram
+#from scipy.cluster.hierarchy import dendrogram
 
 def get_NCM_Figure4_2(two_color = True):
     G = nx.Graph()
@@ -54,7 +54,7 @@ def get_NCM_Figure3_14():
     pos = nx.nx_agraph.graphviz_layout(G,prog='neato')
     return G,color_map,pos
 
-class DendogramHandler:
+class DendrogramHandler:
     def __init__(self,G):
         self.G = G
         self.communities = self._getGirvanNewmanCommunities()
