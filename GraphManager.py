@@ -11,6 +11,7 @@ import networkx as nx
 from ComputeAndPlotDendrogram import *
 from scipy.cluster.hierarchy import dendrogram
 import community as community_louvain
+#import networkx.algorithms.community as nx_comm
 from networkx.algorithms.community.centrality import girvan_newman
 
 from AssortativeNetworkManager import *
